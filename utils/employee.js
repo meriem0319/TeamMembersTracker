@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const { ConnectableObservable } = require("rxjs");
-const db = require("../db/connections");
+const db = require("../config/connections");
 
 const showEmployees = function () {
   const sql = `SELECT * FROM employees`;

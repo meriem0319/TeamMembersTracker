@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const db = require("../db/connections");
+const db = require("../config/connections");
 
 const showDepartment = function () {
   const sql = `SELECT * FROM departments`;
