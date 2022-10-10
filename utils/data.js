@@ -1,4 +1,4 @@
-const db = require("../config/connections");
+const db = require("../db/connections");
 
 const showData = function () {
   const sql = `

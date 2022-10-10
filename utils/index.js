@@ -2,7 +2,7 @@ const inquirer = require("inquirer");
 
 const { showData } = require("./data");
 const { showDepartment, addDepartment } = require("./department");
-const { showEmployees, addEmployee, updateEmployee } = require("./employee");
+const { showEmployees, addEmployee } = require("./employee");
 const { showRole, addRole } = require("./role");
 
 const mainView = function () {
@@ -48,9 +48,6 @@ const mainView = function () {
           break;
         case "Add Role":
           addRole();
-          break;
-        case "Update Employee":
-          updateEmployee();
           break;
         default:
           console.log("Bye...leaving the program.");

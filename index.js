@@ -1,3 +1,3 @@
-const { mainView } = require("./utils/index");
+const { mainView } = require("./utils/index.js");
 
 mainView();

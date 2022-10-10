@@ -1,6 +1,5 @@
 const inquirer = require("inquirer");
-const { ConnectableObservable } = require("rxjs");
-const db = require("../config/connections");
+const db = require("../db/connections");
 
 const showEmployees = function () {
   const sql = `SELECT * FROM employees`;
@@ -16,7 +15,7 @@ const showEmployees = function () {
 
 const addEmployee = function () {
   inquirer
-    .createPromptModule([
+    .prompt([
       {
         type: "text",
         name: "firstName",
@@ -58,45 +57,4 @@ const addEmployee = function () {
     .catch((err) => console.log(err.message));
 };
 
-//one of the bonuses is to update employee
-
-const updateEmployee = function () {
-  inquirer
-    .prompt([
-      {
-        type: "list",
-        name: "updateParam",
-        message: "Which would you like to update for Employee?",
-        choices: [`first_name`, `last_name`, `role_id`, `manager_id`],
-      },
-      {
-        type: "number",
-        name: "indexValue",
-        message: "What is the index value for Employee?",
-        choices: [`first_name`, `last_name`, `role_id`, `manager_id`],
-      },
-      {
-        type: "list",
-        name: "newValue",
-        message: "Type the new value to replace previous value",
-        choices: [`first_name`, `last_name`, `role_id`, `manager_id`],
-      },
-    ])
-    .then((answers) => {
-      const sql = `UPDATE employees SET last_name = ? WHERE id = ?`;
-      const params = [answers.newValue, answers.indexValue];
-      db.query(sql, params, (err, result) => {
-        console.log(params);
-        if (err) {
-          console.log(err.message);
-          return;
-        }
-        console.log("Updated Successfully!");
-      });
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-};
-
-module.exports = { showEmployees, addEmployee, updateEmployee };
+module.exports = { showEmployees, addEmployee };

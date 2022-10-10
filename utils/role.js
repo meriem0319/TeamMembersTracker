@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const db = require("../config/connections");
+const db = require("../db/connections");
 
 const showRole = function () {
   const sql = `SELECT * FROM roles`;
@@ -15,7 +15,7 @@ const showRole = function () {
 
 const addRole = function () {
   inquirer
-    .createPromptModule([
+    .prompt([
       {
         type: "text",
         name: "title",

@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const db = require("../config/connections");
+const db = require("../db/connections");
 
 const showDepartment = function () {
   const sql = `SELECT * FROM departments`;
@@ -15,7 +15,7 @@ const showDepartment = function () {
 
 const addDepartment = function () {
   inquirer
-    .createPromptModule([
+    .prompt([
       {
         type: "text",
         name: "name",
